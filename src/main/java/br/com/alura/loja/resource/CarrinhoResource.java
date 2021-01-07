@@ -10,7 +10,6 @@ import br.com.alura.loja.modelo.Carrinho;
 
 @Path("carrinhos")
 public class CarrinhoResource {
-
 	
 	@GET
 	@Produces(MediaType.APPLICATION_XML)

@@ -1,5 +1,7 @@
 package br.com.alura.loja.modelo;
 
+import com.thoughtworks.xstream.XStream;
+
 public class Projeto {
 
 	private long id;
@@ -28,6 +30,9 @@ public class Projeto {
 	}
 	public void setAnoDeInicio(int anoDeInicio) {
 		this.anoDeInicio = anoDeInicio;
+	}
+	public String toXML() {
+		return new XStream().toXML(this);
 	}
 	
 	

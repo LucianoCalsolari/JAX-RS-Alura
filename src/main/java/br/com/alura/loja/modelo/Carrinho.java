@@ -78,7 +78,6 @@ public class Carrinho {
 	}
 
 	public String toXML() {
-		
 		return new XStream().toXML(this);
 	}
 
