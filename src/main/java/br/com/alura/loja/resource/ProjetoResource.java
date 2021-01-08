@@ -17,5 +17,4 @@ public class ProjetoResource {
 		Projeto projeto = new ProjetoDAO().busca(1l);
 		return projeto.toXML();
 	}
-
 }
