@@ -8,6 +8,9 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 
+import org.glassfish.grizzly.http.server.HttpServer;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import br.com.alura.loja.dao.ProjetoDAO;
@@ -15,6 +18,20 @@ import br.com.alura.loja.modelo.Projeto;
 
 public class ProjetoDAOTest {
 
+	private HttpServer server;
+
+	@Before
+	public void before() {
+
+		server = Servidor.inicializaServidor();
+	}
+	
+	@After
+	public void after() {
+		server.stop();
+	}
+	
+	
 	@Test
 	public void deveRetornarNomePeloIdDeNovoProjeto() {
 
