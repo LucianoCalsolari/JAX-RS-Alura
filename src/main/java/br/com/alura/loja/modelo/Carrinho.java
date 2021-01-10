@@ -11,7 +11,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 import com.google.gson.Gson;
 import com.thoughtworks.xstream.XStream;
 
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Carrinho {
+ 
+	public Carrinho() {
+		super();
+	}
 
 	private List<Produto> produtos = new ArrayList<Produto>();
 	private String rua;
@@ -41,23 +47,24 @@ public class Carrinho {
 	public void setRua(String rua) {
 		this.rua = rua;
 	}
+
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
 	}
-	
+
 	public long getId() {
 		return id;
 	}
-	
+
 	public void remove(long id) {
 		for (Iterator iterator = produtos.iterator(); iterator.hasNext();) {
 			Produto produto = (Produto) iterator.next();
-			if(produto.getId() == id) {
+			if (produto.getId() == id) {
 				iterator.remove();
 			}
 		}
 	}
-	
+
 	public void troca(Produto produto) {
 		remove(produto.getId());
 		adiciona(produto);
@@ -66,13 +73,13 @@ public class Carrinho {
 	public void trocaQuantidade(Produto produto) {
 		for (Iterator iterator = produtos.iterator(); iterator.hasNext();) {
 			Produto p = (Produto) iterator.next();
-			if(p.getId() == produto.getId()) {
+			if (p.getId() == produto.getId()) {
 				p.setQuantidade(produto.getQuantidade());
 				return;
 			}
 		}
 	}
-	
+
 	public List<Produto> getProdutos() {
 		return produtos;
 	}

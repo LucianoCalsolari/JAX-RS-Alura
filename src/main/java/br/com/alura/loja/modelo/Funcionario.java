@@ -6,45 +6,59 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Produto {
-
-	private double preco;
-	private long id;
-	private String nome;
-	private int quantidade;
-	
-	public Produto() {
+public class Funcionario {
+	public Funcionario() {
 		super();
 	}
+	
+	private long id;
+	private double preco;
+	private String tecnologia;
+	private int quantidade;
+	
+	
 
-	public Produto(long id, String nome, double preco, int quantidade) {
+	public Funcionario(long id, double preco, String tecnologia, int quantidade) {
+		super();
 		this.id = id;
-		this.nome = nome;
 		this.preco = preco;
+		this.tecnologia = tecnologia;
 		this.quantidade = quantidade;
-	}
-
-	public double getPreco() {
-		return preco;
 	}
 
 	public long getId() {
 		return id;
 	}
 
-	public String getNome() {
-		return nome;
+	public void setId(long id) {
+		this.id = id;
 	}
-	
+
+	public double getPreco() {
+		return preco;
+	}
+
+	public void setPreco(double preco) {
+		this.preco = preco;
+	}
+
+	public String getTecnologia() {
+		return tecnologia;
+	}
+
+	public void setTecnologia(String tecnologia) {
+		this.tecnologia = tecnologia;
+	}
+
 	public int getQuantidade() {
 		return quantidade;
-	}
-	
-	public double getPrecoTotal() {
-		return quantidade * preco;
 	}
 
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
 	}
+
+	
+	
+	
 }

@@ -19,19 +19,25 @@ import br.com.alura.loja.modelo.Projeto;
 public class ProjetoDAOTest {
 
 	private HttpServer server;
+	private Client client;
+	private WebTarget target;
+	private Projeto projeto;
 
 	@Before
 	public void before() {
 
+		client = ClientBuilder.newClient();
+		target = client.target("http://localhost:8080");
+
+		projeto = target.path("/projetos/1").request().get(Projeto.class);
 		server = Servidor.inicializaServidor();
 	}
-	
+
 	@After
 	public void after() {
 		server.stop();
 	}
-	
-	
+
 	@Test
 	public void deveRetornarNomePeloIdDeNovoProjeto() {
 
@@ -51,16 +57,19 @@ public class ProjetoDAOTest {
 
 		assertNull(dao.busca(1l));
 	}
-	
+
 	@Test
 	public void testaQueAConexaoComURI() {
-
-		Client client = ClientBuilder.newClient();
-		WebTarget target = client.target("http://localhost:8080");
 
 		String conteudo = target.path("/projetos").request().get(String.class);
 
 		assertTrue(conteudo.contains("Minha loja"));
 	}
-	
+
+	@Test
+	public void testaQueAConexaoComOServidorFuncionaNoPathDeProjetos() {
+		assertEquals(1L, projeto.getId(), 0);
+
+	}
+
 }
